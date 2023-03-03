@@ -17,12 +17,14 @@ class Vehicle(ABC):
         self.base_price = base_price
         self.mileage = mileage
 
+        
 """
     An abstract method that returns the number of wheels on the vehicle.
     This method is abstract and has to be implemented by the subclasses.
     
     :return: int, the number of wheels on the vehicle.
 """
+
     @abstractmethod
     def wheels_num(self) -> int:
         return 0
@@ -34,12 +36,14 @@ class Vehicle(ABC):
     def is_motorcycle(self) -> bool:
         return Vehicle.wheels_num(self) == 2
 
+    
 """
     Calculates the purchase price of the vehicle based on its base price and mileage. 
     :return: float, the purchase price of the vehicle.
     
     Defining a property to calculate the purchase price of the vehicle
 """
+
     @property
     def purchase_price(self) -> float:
         if (self.base_price - 0.1 * self.mileage) < 100000:
@@ -47,24 +51,23 @@ class Vehicle(ABC):
         else:
             vehicle_price = (self.base_price - 0.1 * self.mileage)
         return vehicle_price
-
-# Don't change class implementation
+    
+    
+# blocks define a basic vehicle hierarchy with a common interface for getting information about each vehicle.  
+        
 class Car(Vehicle):
     def wheels_num(self):
         return 4
 
 
-# Don't change class implementation
 class Motorcycle(Vehicle):
     def wheels_num(self):
         return 2
 
 
-# Don't change class implementation
 class Truck(Vehicle):
     def wheels_num(self):
         return 10
-
 
 
 class Bus(Vehicle):
